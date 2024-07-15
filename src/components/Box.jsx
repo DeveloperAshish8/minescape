@@ -15,16 +15,18 @@ const Box = ({ setPoint, gameOver, setGameOver, bomb, resetFlag }) => {
 
   const Clicked = () => {
     if (gameOver || isClicked) return;
+    setIsClicked(true);
     if (bomb) {
-      bombSound.play();
       setGameOver(true);
+      bombSound.play();
+
       return;
     }
     setPoint((prev) => {
       return prev + 100;
     });
-    setImage(diamond);
     diamondSound.play();
+    setImage(diamond);
   };
 
   useEffect(() => {
